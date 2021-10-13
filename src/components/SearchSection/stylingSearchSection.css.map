@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,cAAc,CAAA;EACV,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,OAAO,EAAE,MAAM;EACf,MAAM,EAAE,KAAK;EACb,QAAQ,EAAE,QAAQ;EAClB,OAAO,EAAE,CAAC;EACV,WAAW,EAAE,MAAM;EACnB,KAAK,EAAE,KAAK;EACZ,gBAAgB,EAAE,6BAA6B;CAClD",
+    "sources": [
+        "stylingSearchSection.scss"
+    ],
+    "names": [],
+    "file": "stylingSearchSection.css"
+}

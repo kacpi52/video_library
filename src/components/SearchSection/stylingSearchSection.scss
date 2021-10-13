@@ -1,0 +1,11 @@
+.SearchSection{
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px;
+    height: 800px;
+    position: relative;
+    z-index: 1;
+    align-items: center;
+    color: white;
+    background-image: url('../../images/stars.jpg');
+}
