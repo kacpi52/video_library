@@ -2,6 +2,7 @@ import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import HomePage from './pages/HomePage';
 import signIn from './pages/signIn';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -15,5 +16,5 @@ function App() {
    
   );
 }
- // ///navbary i sidebary mysle czy dac osobno i pod spodem routy do zawartosci home i signin 
+  
 export default App;

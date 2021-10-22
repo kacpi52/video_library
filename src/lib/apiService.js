@@ -6,6 +6,6 @@ export const searchByTitle = async (movietitle) => {
     return {}
   }
   
-  let apiConnectFetch = await fetch(`${API_LINK}/?t=${movietitle}&apikey=${API_KEY}`   );
-  return apiConnectFetch.json();
+  let apiConnect = await fetch(`${API_LINK}/?t=${movietitle}&apikey=${API_KEY}`);
+  return apiConnect.json();
 };
