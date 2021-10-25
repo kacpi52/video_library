@@ -8,20 +8,19 @@ import {FaStar} from 'react-icons/fa';
 const SearchSection = () => {
 const [movieObj, setMovieObj] = useState([]);
 //const [movieStarRat, setMovieStarRat ] = useState([]);
-let movieRating = undefined;
+let movieRating = 0;
 let starsQuantity = [];
 useEffect(async () => {
-    const ApiResp = await searchByTitle('Batman');
+    const ApiResp = await searchByTitle('batman');
     setMovieObj(ApiResp);
     
 
 }, []);
 
-    movieRating = parseInt(movieObj.Metascore, 10);
+    movieRating = parseInt(movieObj.Metascore, 10)/20;
     console.log(movieObj);
-    for (let index = 0; index < movieRating/20; index++) {
-        console.log(index);
-        starsQuantity[index]=<FaStar color='orange'/>;
+    for (let index = 0; index < 5; index++) {
+        starsQuantity.push(<FaStar color={movieRating>=index ? 'orange' : 'gray'} />)
         
     }
     
@@ -40,14 +39,17 @@ useEffect(async () => {
                     </Col>
                     <Col  xs={6}><div className="Description">
                             <p>{movieObj.Plot}</p>
-                            <p>Rating : {map(starsQuantity)} </p>
+                            <p> Rating : {starsQuantity} </p>
                         </div></Col>
-                    <Col>INPUT</Col>
+                    <Col>
+                        <input type='text' className='textInput' />
+                        <button type='submit' className='sendButton'> SEARCH</button>
+                    </Col>
                 </Row>
             </Container>
             </div>
             </>
     )
 }
- // tu mi jebie konsola ze tu funkcja zwraca obiekt itd na tym onclicku p1
+
 export default SearchSection;
