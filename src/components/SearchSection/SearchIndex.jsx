@@ -7,15 +7,27 @@ import {FaStar} from 'react-icons/fa';
 
 const SearchSection = () => {
 const [movieObj, setMovieObj] = useState([]);
-//const [movieStarRat, setMovieStarRat ] = useState([]);
+const [titleInput, setTitleInput] = useState(['shrek'])
 let movieRating = 0;
 let starsQuantity = [];
+
+
+const keyHolder =(event) => {
+    if(event.key ==='Enter'){
+        //changeTitle();
+        console.log('key pressed')
+    }
+}
+const changeTitle = (text) => {
+    setTitleInput(text.target.value)
+};
+
 useEffect(async () => {
-    const ApiResp = await searchByTitle('batman');
+    const ApiResp = await searchByTitle(titleInput);
     setMovieObj(ApiResp);
     
 
-}, []);
+}, [titleInput]);
 
     movieRating = parseInt(movieObj.Metascore, 10)/20;
     console.log(movieObj);
@@ -42,8 +54,8 @@ useEffect(async () => {
                             <p> Rating : {starsQuantity} </p>
                         </div></Col>
                     <Col>
-                        <input type='text' className='textInput' />
-                        <button type='submit' className='sendButton'> SEARCH</button>
+                        <input type='text' className='textInput' onClick={changeTitle} onKeyPress={keyHolder} />
+                        <button type='submit' className='sendButton' > SEARCH</button>
                     </Col>
                 </Row>
             </Container>
