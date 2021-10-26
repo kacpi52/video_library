@@ -7,14 +7,15 @@ import {FaStar} from 'react-icons/fa';
 
 const SearchSection = () => {
 const [movieObj, setMovieObj] = useState([]);
-const [titleInput, setTitleInput] = useState(['shrek'])
+const [titleInput, setTitleInput] = useState();
+const [titleHandler , setTitleHandler] = useState('green mile');
 let movieRating = 0;
 let starsQuantity = [];
 
 
 const keyHolder =(event) => {
     if(event.key ==='Enter'){
-        //changeTitle();
+        setTitleHandler(titleInput);
         console.log('key pressed')
     }
 }
@@ -22,12 +23,17 @@ const changeTitle = (text) => {
     setTitleInput(text.target.value)
 };
 
+const submitHandler = (event) => {
+    event.preventDefault();
+    setTitleHandler(titleInput);
+};
+
 useEffect(async () => {
-    const ApiResp = await searchByTitle(titleInput);
+    const ApiResp = await searchByTitle(titleHandler);
     setMovieObj(ApiResp);
     
 
-}, [titleInput]);
+}, [titleHandler]);
 
     movieRating = parseInt(movieObj.Metascore, 10)/20;
     console.log(movieObj);
@@ -51,11 +57,12 @@ useEffect(async () => {
                     </Col>
                     <Col  xs={6}><div className="Description">
                             <p>{movieObj.Plot}</p>
-                            <p> Rating : {starsQuantity} </p>
+                            <p>{movieObj.Actors}</p>
+                            <p className='ratingP'> Rating : {starsQuantity} </p>
                         </div></Col>
                     <Col>
-                        <input type='text' className='textInput' onClick={changeTitle} onKeyPress={keyHolder} />
-                        <button type='submit' className='sendButton' > SEARCH</button>
+                        <input type='text' className='textInput' onChange={changeTitle} onKeyPress={keyHolder} />
+                        <button type='submit' className='sendButton' onClick={submitHandler}> SEARCH</button>
                     </Col>
                 </Row>
             </Container>
